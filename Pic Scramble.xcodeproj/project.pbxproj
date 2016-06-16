@@ -14,39 +14,21 @@
 		0367F73E1D10020E00BB77A5 /* Pic_Scramble.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0367F73C1D10020E00BB77A5 /* Pic_Scramble.xcdatamodeld */; };
 		0367F7401D10020E00BB77A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0367F73F1D10020E00BB77A5 /* Assets.xcassets */; };
 		0367F7431D10020E00BB77A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0367F7411D10020E00BB77A5 /* LaunchScreen.storyboard */; };
-		0367F74E1D10020E00BB77A5 /* Pic_ScrambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F74D1D10020E00BB77A5 /* Pic_ScrambleTests.m */; };
-		0367F7591D10020E00BB77A5 /* Pic_ScrambleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7581D10020E00BB77A5 /* Pic_ScrambleUITests.m */; };
 		0367F76B1D1002DC00BB77A5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F76A1D1002DC00BB77A5 /* ImageCollectionViewCell.swift */; };
-		0367F76C1D1002DC00BB77A5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F76A1D1002DC00BB77A5 /* ImageCollectionViewCell.swift */; };
-		0367F76D1D1002DC00BB77A5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F76A1D1002DC00BB77A5 /* ImageCollectionViewCell.swift */; };
 		0367F7721D10212500BB77A5 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7711D10212500BB77A5 /* FlickrPhoto.swift */; };
-		0367F7731D10212500BB77A5 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7711D10212500BB77A5 /* FlickrPhoto.swift */; };
-		0367F7741D10212500BB77A5 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7711D10212500BB77A5 /* FlickrPhoto.swift */; };
 		0367F77A1D1026E400BB77A5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0367F7791D1026E400BB77A5 /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		0367F77D1D102AAE00BB77A5 /* ScrambleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F77C1D102AAE00BB77A5 /* ScrambleViewModel.m */; settings = {ASSET_TAGS = (); }; };
-		0367F77E1D102AAE00BB77A5 /* ScrambleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F77C1D102AAE00BB77A5 /* ScrambleViewModel.m */; settings = {ASSET_TAGS = (); }; };
-		0367F77F1D102AAE00BB77A5 /* ScrambleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F77C1D102AAE00BB77A5 /* ScrambleViewModel.m */; settings = {ASSET_TAGS = (); }; };
 		0367F7841D10389500BB77A5 /* FlickerDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7831D10389500BB77A5 /* FlickerDataDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		0367F7851D10389500BB77A5 /* FlickerDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7831D10389500BB77A5 /* FlickerDataDownloader.m */; settings = {ASSET_TAGS = (); }; };
-		0367F7861D10389500BB77A5 /* FlickerDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7831D10389500BB77A5 /* FlickerDataDownloader.m */; settings = {ASSET_TAGS = (); }; };
 		0367F7881D103A3800BB77A5 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7871D103A3800BB77A5 /* PhotoDownloader.swift */; settings = {ASSET_TAGS = (); }; };
-		0367F7891D103A3800BB77A5 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7871D103A3800BB77A5 /* PhotoDownloader.swift */; settings = {ASSET_TAGS = (); }; };
-		0367F78A1D103A3800BB77A5 /* PhotoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F7871D103A3800BB77A5 /* PhotoDownloader.swift */; settings = {ASSET_TAGS = (); }; };
 		0367F78E1D103A8900BB77A5 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F78D1D103A8900BB77A5 /* Async.swift */; settings = {ASSET_TAGS = (); }; };
-		0367F78F1D103A8900BB77A5 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F78D1D103A8900BB77A5 /* Async.swift */; settings = {ASSET_TAGS = (); }; };
-		0367F7901D103A8900BB77A5 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0367F78D1D103A8900BB77A5 /* Async.swift */; settings = {ASSET_TAGS = (); }; };
+		036E54371D11D634002BDFF3 /* Pic_ScrambleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 036E54361D11D634002BDFF3 /* Pic_ScrambleTests.m */; };
+		036E54421D127C4C002BDFF3 /* DelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E54411D127C4C002BDFF3 /* DelegateTests.swift */; settings = {ASSET_TAGS = (); }; };
+		036E54441D127CE8002BDFF3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E54431D127CE8002BDFF3 /* Test.swift */; settings = {ASSET_TAGS = (); }; };
 		3A2D3655C8A5CEC20043B2AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2B590EB98F85FDD7B764A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0367F74A1D10020E00BB77A5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0367F7251D10020E00BB77A5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0367F72C1D10020E00BB77A5;
-			remoteInfo = "Pic Scramble";
-		};
-		0367F7551D10020E00BB77A5 /* PBXContainerItemProxy */ = {
+		036E54391D11D634002BDFF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0367F7251D10020E00BB77A5 /* Project object */;
 			proxyType = 1;
@@ -67,15 +49,7 @@
 		0367F73F1D10020E00BB77A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0367F7421D10020E00BB77A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0367F7441D10020E00BB77A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0367F7491D10020E00BB77A5 /* Pic ScrambleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pic ScrambleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0367F74D1D10020E00BB77A5 /* Pic_ScrambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pic_ScrambleTests.m; sourceTree = "<group>"; };
-		0367F74F1D10020E00BB77A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0367F7541D10020E00BB77A5 /* Pic ScrambleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pic ScrambleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0367F7581D10020E00BB77A5 /* Pic_ScrambleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pic_ScrambleUITests.m; sourceTree = "<group>"; };
-		0367F75A1D10020E00BB77A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0367F7671D1002DB00BB77A5 /* Pic Scramble-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pic Scramble-Bridging-Header.h"; sourceTree = "<group>"; };
-		0367F7681D1002DB00BB77A5 /* Pic ScrambleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pic ScrambleTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		0367F7691D1002DC00BB77A5 /* Pic ScrambleUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pic ScrambleUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0367F76A1D1002DC00BB77A5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0367F7711D10212500BB77A5 /* FlickrPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 		0367F7791D1026E400BB77A5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -85,6 +59,13 @@
 		0367F7831D10389500BB77A5 /* FlickerDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickerDataDownloader.m; sourceTree = "<group>"; };
 		0367F7871D103A3800BB77A5 /* PhotoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDownloader.swift; sourceTree = "<group>"; };
 		0367F78D1D103A8900BB77A5 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		036E54341D11D633002BDFF3 /* Pic ScrambleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pic ScrambleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		036E54361D11D634002BDFF3 /* Pic_ScrambleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pic_ScrambleTests.m; sourceTree = "<group>"; };
+		036E54381D11D634002BDFF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		036E543E1D127C16002BDFF3 /* Pic ScrambleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pic ScrambleTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		036E54411D127C4C002BDFF3 /* DelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateTests.swift; sourceTree = "<group>"; };
+		036E54431D127CE8002BDFF3 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		039C0D431D1176810054D36E /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		5562E587F99A6ABBE2244457 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		66D2B590EB98F85FDD7B764A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D451F4A3BA64845E7FE9AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,14 +80,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0367F7461D10020E00BB77A5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0367F7511D10020E00BB77A5 /* Frameworks */ = {
+		036E54311D11D633002BDFF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +93,10 @@
 		0367F7241D10020E00BB77A5 = {
 			isa = PBXGroup;
 			children = (
+				039C0D431D1176810054D36E /* Credits.rtf */,
 				0367F7791D1026E400BB77A5 /* Podfile */,
 				0367F72F1D10020E00BB77A5 /* Pic Scramble */,
-				0367F74C1D10020E00BB77A5 /* Pic ScrambleTests */,
-				0367F7571D10020E00BB77A5 /* Pic ScrambleUITests */,
+				036E54351D11D634002BDFF3 /* Pic ScrambleTests */,
 				0367F72E1D10020E00BB77A5 /* Products */,
 				518065588402922723268639 /* Pods */,
 				535549085548723AA6801CE5 /* Frameworks */,
@@ -133,8 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				0367F72D1D10020E00BB77A5 /* Pic Scramble.app */,
-				0367F7491D10020E00BB77A5 /* Pic ScrambleTests.xctest */,
-				0367F7541D10020E00BB77A5 /* Pic ScrambleUITests.xctest */,
+				036E54341D11D633002BDFF3 /* Pic ScrambleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,31 +142,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0367F74C1D10020E00BB77A5 /* Pic ScrambleTests */ = {
-			isa = PBXGroup;
-			children = (
-				0367F74D1D10020E00BB77A5 /* Pic_ScrambleTests.m */,
-				0367F74F1D10020E00BB77A5 /* Info.plist */,
-			);
-			path = "Pic ScrambleTests";
-			sourceTree = "<group>";
-		};
-		0367F7571D10020E00BB77A5 /* Pic ScrambleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0367F7581D10020E00BB77A5 /* Pic_ScrambleUITests.m */,
-				0367F75A1D10020E00BB77A5 /* Info.plist */,
-			);
-			path = "Pic ScrambleUITests";
-			sourceTree = "<group>";
-		};
 		0367F7661D1002B200BB77A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0367F76A1D1002DC00BB77A5 /* ImageCollectionViewCell.swift */,
 				0367F7671D1002DB00BB77A5 /* Pic Scramble-Bridging-Header.h */,
-				0367F7681D1002DB00BB77A5 /* Pic ScrambleTests-Bridging-Header.h */,
-				0367F7691D1002DC00BB77A5 /* Pic ScrambleUITests-Bridging-Header.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +184,18 @@
 				0367F78D1D103A8900BB77A5 /* Async.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		036E54351D11D634002BDFF3 /* Pic ScrambleTests */ = {
+			isa = PBXGroup;
+			children = (
+				036E54361D11D634002BDFF3 /* Pic_ScrambleTests.m */,
+				036E54381D11D634002BDFF3 /* Info.plist */,
+				036E543E1D127C16002BDFF3 /* Pic ScrambleTests-Bridging-Header.h */,
+				036E54411D127C4C002BDFF3 /* DelegateTests.swift */,
+				036E54431D127CE8002BDFF3 /* Test.swift */,
+			);
+			path = "Pic ScrambleTests";
 			sourceTree = "<group>";
 		};
 		518065588402922723268639 /* Pods */ = {
@@ -272,41 +237,23 @@
 			productReference = 0367F72D1D10020E00BB77A5 /* Pic Scramble.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0367F7481D10020E00BB77A5 /* Pic ScrambleTests */ = {
+		036E54331D11D633002BDFF3 /* Pic ScrambleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0367F7601D10020E00BB77A5 /* Build configuration list for PBXNativeTarget "Pic ScrambleTests" */;
+			buildConfigurationList = 036E543B1D11D634002BDFF3 /* Build configuration list for PBXNativeTarget "Pic ScrambleTests" */;
 			buildPhases = (
-				0367F7451D10020E00BB77A5 /* Sources */,
-				0367F7461D10020E00BB77A5 /* Frameworks */,
-				0367F7471D10020E00BB77A5 /* Resources */,
+				036E54301D11D633002BDFF3 /* Sources */,
+				036E54311D11D633002BDFF3 /* Frameworks */,
+				036E54321D11D633002BDFF3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0367F74B1D10020E00BB77A5 /* PBXTargetDependency */,
+				036E543A1D11D634002BDFF3 /* PBXTargetDependency */,
 			);
 			name = "Pic ScrambleTests";
 			productName = "Pic ScrambleTests";
-			productReference = 0367F7491D10020E00BB77A5 /* Pic ScrambleTests.xctest */;
+			productReference = 036E54341D11D633002BDFF3 /* Pic ScrambleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0367F7531D10020E00BB77A5 /* Pic ScrambleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0367F7631D10020E00BB77A5 /* Build configuration list for PBXNativeTarget "Pic ScrambleUITests" */;
-			buildPhases = (
-				0367F7501D10020E00BB77A5 /* Sources */,
-				0367F7511D10020E00BB77A5 /* Frameworks */,
-				0367F7521D10020E00BB77A5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0367F7561D10020E00BB77A5 /* PBXTargetDependency */,
-			);
-			name = "Pic ScrambleUITests";
-			productName = "Pic ScrambleUITests";
-			productReference = 0367F7541D10020E00BB77A5 /* Pic ScrambleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -321,11 +268,7 @@
 					0367F72C1D10020E00BB77A5 = {
 						CreatedOnToolsVersion = 7.0;
 					};
-					0367F7481D10020E00BB77A5 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = 0367F72C1D10020E00BB77A5;
-					};
-					0367F7531D10020E00BB77A5 = {
+					036E54331D11D633002BDFF3 = {
 						CreatedOnToolsVersion = 7.0;
 						TestTargetID = 0367F72C1D10020E00BB77A5;
 					};
@@ -345,8 +288,7 @@
 			projectRoot = "";
 			targets = (
 				0367F72C1D10020E00BB77A5 /* Pic Scramble */,
-				0367F7481D10020E00BB77A5 /* Pic ScrambleTests */,
-				0367F7531D10020E00BB77A5 /* Pic ScrambleUITests */,
+				036E54331D11D633002BDFF3 /* Pic ScrambleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -363,14 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0367F7471D10020E00BB77A5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0367F7521D10020E00BB77A5 /* Resources */ = {
+		036E54321D11D633002BDFF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -430,46 +365,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0367F7451D10020E00BB77A5 /* Sources */ = {
+		036E54301D11D633002BDFF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0367F76C1D1002DC00BB77A5 /* ImageCollectionViewCell.swift in Sources */,
-				0367F7891D103A3800BB77A5 /* PhotoDownloader.swift in Sources */,
-				0367F7731D10212500BB77A5 /* FlickrPhoto.swift in Sources */,
-				0367F78F1D103A8900BB77A5 /* Async.swift in Sources */,
-				0367F7851D10389500BB77A5 /* FlickerDataDownloader.m in Sources */,
-				0367F74E1D10020E00BB77A5 /* Pic_ScrambleTests.m in Sources */,
-				0367F77E1D102AAE00BB77A5 /* ScrambleViewModel.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0367F7501D10020E00BB77A5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0367F76D1D1002DC00BB77A5 /* ImageCollectionViewCell.swift in Sources */,
-				0367F78A1D103A3800BB77A5 /* PhotoDownloader.swift in Sources */,
-				0367F7741D10212500BB77A5 /* FlickrPhoto.swift in Sources */,
-				0367F7901D103A8900BB77A5 /* Async.swift in Sources */,
-				0367F7861D10389500BB77A5 /* FlickerDataDownloader.m in Sources */,
-				0367F7591D10020E00BB77A5 /* Pic_ScrambleUITests.m in Sources */,
-				0367F77F1D102AAE00BB77A5 /* ScrambleViewModel.m in Sources */,
+				036E54421D127C4C002BDFF3 /* DelegateTests.swift in Sources */,
+				036E54371D11D634002BDFF3 /* Pic_ScrambleTests.m in Sources */,
+				036E54441D127CE8002BDFF3 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0367F74B1D10020E00BB77A5 /* PBXTargetDependency */ = {
+		036E543A1D11D634002BDFF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0367F72C1D10020E00BB77A5 /* Pic Scramble */;
-			targetProxy = 0367F74A1D10020E00BB77A5 /* PBXContainerItemProxy */;
-		};
-		0367F7561D10020E00BB77A5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0367F72C1D10020E00BB77A5 /* Pic Scramble */;
-			targetProxy = 0367F7551D10020E00BB77A5 /* PBXContainerItemProxy */;
+			targetProxy = 036E54391D11D634002BDFF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -579,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Pic Scramble/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-Scramble";
@@ -594,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Pic Scramble/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-Scramble";
@@ -602,7 +516,7 @@
 			};
 			name = Release;
 		};
-		0367F7611D10020E00BB77A5 /* Debug */ = {
+		036E543C1D11D634002BDFF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -611,13 +525,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-ScrambleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pic Scramble/Views/Pic ScrambleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pic ScrambleTests/Pic ScrambleTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pic Scramble.app/Pic Scramble";
 			};
 			name = Debug;
 		};
-		0367F7621D10020E00BB77A5 /* Release */ = {
+		036E543D1D11D634002BDFF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -626,37 +540,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-ScrambleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pic Scramble/Views/Pic ScrambleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pic ScrambleTests/Pic ScrambleTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pic Scramble.app/Pic Scramble";
-			};
-			name = Release;
-		};
-		0367F7641D10020E00BB77A5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "Pic ScrambleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-ScrambleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pic Scramble/Views/Pic ScrambleUITests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_TARGET_NAME = "Pic Scramble";
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		0367F7651D10020E00BB77A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "Pic ScrambleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.generic.Pic-ScrambleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pic Scramble/Views/Pic ScrambleUITests-Bridging-Header.h";
-				TEST_TARGET_NAME = "Pic Scramble";
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -681,23 +566,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0367F7601D10020E00BB77A5 /* Build configuration list for PBXNativeTarget "Pic ScrambleTests" */ = {
+		036E543B1D11D634002BDFF3 /* Build configuration list for PBXNativeTarget "Pic ScrambleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0367F7611D10020E00BB77A5 /* Debug */,
-				0367F7621D10020E00BB77A5 /* Release */,
+				036E543C1D11D634002BDFF3 /* Debug */,
+				036E543D1D11D634002BDFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0367F7631D10020E00BB77A5 /* Build configuration list for PBXNativeTarget "Pic ScrambleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0367F7641D10020E00BB77A5 /* Debug */,
-				0367F7651D10020E00BB77A5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

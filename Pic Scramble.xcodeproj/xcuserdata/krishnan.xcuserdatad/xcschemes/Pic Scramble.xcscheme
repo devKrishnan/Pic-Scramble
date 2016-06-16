@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0367F7481D10020E00BB77A5"
+               BlueprintIdentifier = "036E54331D11D633002BDFF3"
                BuildableName = "Pic ScrambleTests.xctest"
                BlueprintName = "Pic ScrambleTests"
                ReferencedContainer = "container:Pic Scramble.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0367F7531D10020E00BB77A5"
+               BlueprintIdentifier = "037185671D11922A0067D781"
                BuildableName = "Pic ScrambleUITests.xctest"
                BlueprintName = "Pic ScrambleUITests"
                ReferencedContainer = "container:Pic Scramble.xcodeproj">

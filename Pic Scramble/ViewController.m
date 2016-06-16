@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "ScrambleViewModel.h"
-//#import "Pic_Scramble-Swift.h"
+#import "Pic_Scramble-Swift.h"
 
 NSString * reuseIdentifier = @"ImageCollectionViewCell";
 
@@ -28,6 +28,7 @@ NSString * reuseIdentifier = @"ImageCollectionViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.startButton.enabled = NO;
     self.viewModel = [[ScrambleViewModel alloc]initWithHandler:^(FlickrPhoto *photo, NSIndexPath *indexPath) {
         
         [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
@@ -72,12 +73,43 @@ NSString * reuseIdentifier = @"ImageCollectionViewCell";
 - (void)configureCell:(ImageCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     UIImage *image = [viewModel imageForItemAtIndex:indexPath.row];
-    cell.imageView.image = image;
+    if (viewModel.gameMode == GameNotYetBegan ) {
+        cell.imageView.image = image;
+    }else{
+        [self flipVerical:cell.imageView withNewImage:image];
+    }
+    
+    
+}
+-(void)flipVerical:(UIImageView*)imageView withNewImage:(UIImage*)image{
+    
+  
+        
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            imageView.layer.transform = CATransform3DMakeRotation(M_PI/2,1.0,0.0,0.0);
+            
+        } completion:^(BOOL finished) {
+        
+            
+            [UIView animateWithDuration:1.0 animations:^{
+                imageView.image = image;
+                imageView.layer.transform = CATransform3DMakeRotation(4*M_PI,1.0,0.0,0.0);
+            } completion:^(BOOL finished) {
+                
+                
+                
+            }];
+        }];
+    
+    
+    
+   
 }
 #pragma mark Event-Handlers
 - (IBAction)beginGame:(id)sender {
     startButton.enabled = NO;
-    self.viewModel.gameMode = GameInProgress;
+    self.viewModel.gameMode = GameInitiatedTimerNotFired;
 }
 
 #pragma mark Communication-Delegate
@@ -87,14 +119,25 @@ NSString * reuseIdentifier = @"ImageCollectionViewCell";
     self.startButton.enabled = YES;
     self.collectionView.allowsSelection = NO;
     self.currentImageView.image = nil;
+    self.timerLabel.hidden = YES;
     //[self.tim]
 }
--(void)didGameBegan:(ScrambleViewModel*)viewModel{
-    
+-(void)didGameInitiatedTimerNotFired:(ScrambleViewModel*)viewModel{
     self.startButton.enabled = NO;
     self.collectionView.allowsSelection = YES;
+    self.timerLabel.hidden = NO;
+    [self.collectionView  reloadData];
+}
+-(void)didGameBegan:(ScrambleViewModel*)viewModel{
+    self.timerLabel.hidden = YES;
+    [self.collectionView  reloadData];
+    
+}
+-(void)updateTimerText:(NSString*)text{
+    self.timerLabel.text =  text;
 }
 -(void)didGameEnd:(ScrambleViewModel*)viewModel{
+    
     
     self.startButton.enabled = YES;
     self.collectionView.allowsSelection = NO;
@@ -107,11 +150,21 @@ NSString * reuseIdentifier = @"ImageCollectionViewCell";
 -(void)didPhotoLoadFinish:(ScrambleViewModel *)viewModel{
     startButton.enabled = YES;
 }
--(void)didIdentificationSucceedAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel{
-    if (NO == [viewModel isGameOver]) {
-        [self showMessage:@"Image Identification Succeeded"];
-    }
+-(void)didIdentificationSucceedAtIndex:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel{
+
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        
+    }];
     
+    
+    
+}
+-(void)showAlertController:(UIAlertController*)alertController forViewModel:(ScrambleViewModel*)viewModel{
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 -(void)didIdentificationFailAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel{
     [self showMessage:@"Image Identification Failed"];

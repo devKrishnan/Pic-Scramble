@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Pic_Scramble-Swift.h"
+#import <UIKit/UIKit.h>
 
+@class FlickrPhoto;
 @class ScrambleViewModel;
 
 @protocol UICommunication <NSObject>
@@ -17,20 +18,23 @@
 -(void)didPhotoLoadBegan:(ScrambleViewModel*)viewModel;
 -(void)didPhotoLoadFinish:(ScrambleViewModel*)viewModel;
 -(void)didGameReset:(ScrambleViewModel*)viewModel;
+-(void)didGameInitiatedTimerNotFired:(ScrambleViewModel*)viewModel;
 -(void)didGameBegan:(ScrambleViewModel*)viewModel;
 -(void)didGameEnd:(ScrambleViewModel*)viewModel;
-
--(void)didIdentificationSucceedAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel;
+-(void)showAlertController:(UIAlertController*)alertController forViewModel:(ScrambleViewModel*)viewModel;
+-(void)didIdentificationSucceedAtIndex:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel;
 -(void)didIdentificationFailAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel;
 
 -(void)didFreshIdentifcationBeginWithImage:(UIImage *)image inViewModel :(ScrambleViewModel *)viewModel;
+-(void)updateTimerText:(NSString*)text;
 @end
 
 typedef void (^ImageLoadingHandler)(FlickrPhoto *photo,NSIndexPath *indexPath);
 
 typedef enum {
     GameNotYetBegan = 0,
-    GameInProgress,
+    GameInitiatedTimerNotFired,
+    GameBegan,
     GameEnded
 }GameMode;
 
@@ -40,7 +44,7 @@ typedef enum {
 @property(nonatomic)GameMode gameMode;
 
 
-
+@property(nonatomic,readonly)u_int32_t totalPhotos;
 -(id)initWithHandler:(ImageLoadingHandler)handler;
 -(BOOL)isGameOver;
 -(void)didSelectImageAtIndex:(NSInteger)selectedIndex;

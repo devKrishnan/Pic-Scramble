@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Pic ScrambleTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,21 @@
 			<true/>
 		</dict>
 		<key>0367F7531D10020E00BB77A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>036E54331D11D633002BDFF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>037185671D11922A0067D781</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>037185751D1192320067D781</key>
 		<dict>
 			<key>primary</key>
 			<true/>
