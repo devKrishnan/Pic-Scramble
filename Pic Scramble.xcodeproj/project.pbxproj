@@ -573,6 +573,7 @@
 				036E543D1D11D634002BDFF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

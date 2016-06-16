@@ -58,13 +58,8 @@ NSString * reuseIdentifier = @"ImageCollectionViewCell";
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, 100);
-}
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    UIEdgeInsets sectionInsets = UIEdgeInsetsMake(50.0, 20.0, 50.0, 20.0 );
-    return sectionInsets;
-}
+
+
 #pragma mark Delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [viewModel didSelectImageAtIndex:indexPath.row];
