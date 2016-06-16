@@ -20,11 +20,14 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 @property(nonatomic,copy)ImageLoadingHandler handler;
 @property(nonatomic,strong)PhotoDownloader *downloader;
 @property(nonatomic,copy)NSMutableArray *photoList;
-@property(nonatomic)BOOL isAllItemsSelectionMandatoryForGameEnd;
+@property(nonatomic)BOOL isAllPhotosFetchedFromServer;
+
 @property(nonatomic)NSInteger currentlyShownImageIndex;
 @property(nonatomic,strong)NSMutableSet *identifiedPhotoIndexes;
 
-@property(nonatomic)BOOL isAllPhotosFetchedFromServer;
+//Game Level Configurable Propertie
+@property(nonatomic)BOOL isAllItemsSelectionMandatoryForGameEnd;
+
 @end
 
 @implementation ScrambleViewModel

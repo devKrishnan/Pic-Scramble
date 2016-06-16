@@ -53,6 +53,7 @@ typedef enum {
 -(UIImage*)imageForItemAtIndex:(NSInteger)index;
 
 
+@property(nonatomic,readonly)BOOL isAllItemsSelectionMandatoryForGameEnd;
 @property(nonatomic,readonly)NSInteger currentlyShownImageIndex;
 @property(nonatomic,copy,readonly)NSMutableArray *photoList;
 @property(nonatomic,readonly)u_int32_t totalPhotos;

@@ -171,7 +171,15 @@
     viewModel.gameMode = GameBegan;
     XCTAssertFalse([viewModel isGameOver],@"Game Over logic wrong");
     for (int index = 0; index  < viewModel.totalPhotos; index++) {
-        XCTAssertFalse([viewModel isGameOver],@"Game Over logic wrong");
+        
+        if (viewModel.isAllItemsSelectionMandatoryForGameEnd) {
+            XCTAssertFalse([viewModel isGameOver],@"Game Over logic wrong");
+        }else{
+            if (index == viewModel.totalPhotos-1) {
+                XCTAssertTrue([viewModel isGameOver],@"Game Over logic wrong");
+            }
+        }
+        
         NSInteger currentRandomImageIndex = viewModel.currentlyShownImageIndex;
         [viewModel didSelectImageAtIndex:currentRandomImageIndex];
         XCTAssertEqual(currentRandomImageIndex, viewModelDelegate.identificationSucceedIndex.row,@"Image selection logic fails");
