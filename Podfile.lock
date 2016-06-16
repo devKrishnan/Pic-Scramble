@@ -2,11 +2,14 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - UIView+Shake (1.1.5)
 
 DEPENDENCIES:
   - SDWebImage (~> 3.8)
+  - UIView+Shake
 
 SPEC CHECKSUMS:
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  UIView+Shake: 2d2185006d38ee5daed07f14c0989f703f86682f
 
 COCOAPODS: 0.38.2

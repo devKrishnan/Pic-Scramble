@@ -9,22 +9,49 @@
 #import <XCTest/XCTest.h>
 #import "ScrambleViewModel.h"
 #import "Pic_ScrambleTests-Swift.h"
+
+@interface ScrambleViewModel ()
+-(void)beginTimer;
+@end
 @interface Pic_ScrambleTests : XCTestCase<UICommunication>
 @property(nonatomic,strong)ScrambleViewModel *viewModel;
+@property(nonatomic,strong)SpyDelegate *viewModelDelegate;
 @end
 
 @implementation Pic_ScrambleTests
-@synthesize viewModel;
+@synthesize viewModel,viewModelDelegate;
+- (void) backgroundMethodWithCallback: (void(^)(void)) callback {
+    dispatch_queue_t backgroundQueue;
+    backgroundQueue = dispatch_queue_create("background.queue", NULL);
+    dispatch_async(backgroundQueue, ^(void) {
+        callback();
+    });
+}
+
 - (void)setUp {
     [super setUp];
     
+    XCTestExpectation *expectation = [self expectationWithDescription:@"get Service Person By ID"];
     self.viewModel = [[ScrambleViewModel alloc]initWithHandler:^(FlickrPhoto *photo, NSIndexPath *indexPath) {
         
         
         
+        XCTAssert(viewModel.photoList.count > 0);
+        if (viewModel.photoList.count >= viewModel.totalPhotos) {
+            self.viewModelDelegate = [[SpyDelegate alloc]init];
+            self.viewModel.communicationDelegate = viewModelDelegate;
+            [expectation fulfill];
+            
+        }
+        
+    }];
+    [self waitForExpectationsWithTimeout:20.0 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Timeout Error: %@", error);
+        }
     }];
     
-viewModel.gameMode = GameNotYetBegan;
+    
     
     
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -61,65 +88,112 @@ viewModel.gameMode = GameNotYetBegan;
     // no teardown needed
 }
 
-- (void)testGameBegin {
-    
-    SpyDelegate *delegate = [[SpyDelegate alloc]init];
-    self.viewModel.communicationDelegate = delegate;
-    
-    XCTestExpectation *getServicePersonExpectation = [self expectationWithDescription:@"get Service Person By ID"];
-    delegate.asyncExpectation = getServicePersonExpectation;
+- (void)testGameReset {
     
     
-    
-    
-    //XCTAssertTrue(delegate.gameBegan ,@"Game begin failed");
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    viewModel.gameMode = GameNotYetBegan;
+    XCTAssertTrue(viewModelDelegate.gameReset,@"Game reset failed");
+
 }
 
+- (void)testGameInitiate {
+    
+
+    viewModel.gameMode = GameInitiatedTimerNotFired;
+    [viewModel beginTimer];
+    XCTAssertTrue(viewModelDelegate.gameInitatedTimerNotFired,@"Game  Initiation failed");
+    
+    
+}
+
+- (void)testGameBeganAndImage {
+    
+   
+    viewModel.gameMode = GameBegan;
+    
+    XCTAssertTrue(viewModelDelegate.gameBegan,@"Game began failed");
+    XCTAssertNotNil(viewModelDelegate.imageToIdentify, @"Image for identification failed to set");
+    
+    
+}
+- (void)testGameEnd {
+    
+    viewModel.gameMode = GameEnded;
+    
+    XCTAssertTrue(viewModelDelegate.gameEnded,@"Game Ending failed");
+
+}
+
+- (void)testImageForDifferentState {
+    
+    UIImage *defaultImage = [UIImage imageNamed:@"Default-Image"];
+    UIImage *questionCoinImage = [UIImage imageNamed:@"Question-Coin"];
+    
+    viewModel.gameMode = GameNotYetBegan;
+    UIImage *imageNotYetBegan = [self.viewModel imageForItemAtIndex:0];
+    BOOL isImageSame = [self image:defaultImage isEqualTo:imageNotYetBegan];
+    XCTAssertTrue(isImageSame,@"GameNotYetBegan Image logic wrong");
+    
+    viewModel.gameMode = GameBegan;
+    UIImage *imageGameBegan = [self.viewModel imageForItemAtIndex:0];
+    isImageSame = [self image:questionCoinImage isEqualTo:imageGameBegan];
+    XCTAssertTrue(isImageSame,@"GameBegan Image logic wrong");
+    
+    viewModel.gameMode = GameEnded;
+    UIImage *imageGameEnded = [self.viewModel imageForItemAtIndex:0];
+    id flickPhotoObject = [self.viewModel.photoList objectAtIndex:0];
+    UIImage *flickrPhoto = [flickPhotoObject performSelector:@selector(largeImage)];
+    
+    isImageSame = [self image:imageGameEnded isEqualTo:flickrPhoto];
+    XCTAssertTrue(isImageSame,@"GameEnd Image logic wrong");
+    
+}
+
+
+-(void)testImageSelection{
+    viewModel.gameMode = GameBegan;
+    NSInteger currentRandomImageIndex = viewModel.currentlyShownImageIndex;
+    [viewModel didSelectImageAtIndex:currentRandomImageIndex];
+    XCTAssertEqual(currentRandomImageIndex, viewModelDelegate.identificationSucceedIndex.row,@"Image selection logic fails");
+    
+    NSInteger failureIndex = currentRandomImageIndex;
+    if (failureIndex == 0) {
+        failureIndex = failureIndex + 1;
+    }else{
+        failureIndex = failureIndex - 1;
+    }
+    [viewModel didSelectImageAtIndex:failureIndex];
+    XCTAssertEqual(failureIndex, viewModelDelegate.identificationFailedIndex.row,@"Image selection Failure case logic is wrong and it fails");
+    
+}
+
+-(void)testGameOver{
+    viewModel.gameMode = GameBegan;
+    XCTAssertFalse([viewModel isGameOver],@"Game Over logic wrong");
+    for (int index = 0; index  < viewModel.totalPhotos; index++) {
+        XCTAssertFalse([viewModel isGameOver],@"Game Over logic wrong");
+        NSInteger currentRandomImageIndex = viewModel.currentlyShownImageIndex;
+        [viewModel didSelectImageAtIndex:currentRandomImageIndex];
+        XCTAssertEqual(currentRandomImageIndex, viewModelDelegate.identificationSucceedIndex.row,@"Image selection logic fails");
+        
+    }
+    XCTAssertTrue([viewModel isGameOver],@"Game Over logic wrong");
+    XCTAssertTrue(viewModel.gameMode == GameEnded,@"Game Over logic wrong");
+    
+}
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
 }
-#pragma mark Communication-Delegate
-#pragma mark
--(void)showMessage:(NSString*)message{
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
     
-}
--(void)didPhotoLoadBegan:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didPhotoLoadFinish:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didGameReset:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didGameInitiatedTimerNotFired:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didGameBegan:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didGameEnd:(ScrambleViewModel*)viewModel{
-    
-}
--(void)showAlertController:(UIAlertController*)alertController forViewModel:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didIdentificationSucceedAtIndex:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel{
-    
-}
--(void)didIdentificationFailAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel{
-    
-}
-
--(void)didFreshIdentifcationBeginWithImage:(UIImage *)image inViewModel :(ScrambleViewModel *)viewModel{
-    
-}
--(void)updateTimerText:(NSString*)text{
-    
+    return [data1 isEqual:data2];
 }
 @end
+
+

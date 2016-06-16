@@ -13,23 +13,25 @@
 CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 
 @interface ScrambleViewModel ()
+@property(nonatomic)BOOL didTimerForIdentificationBegin;
 @property (weak) NSTimer *repeatingTimer;
 @property(nonatomic)NSInteger timeInSeconds;
 @property(nonatomic)u_int32_t totalPhotos;
 @property(nonatomic,copy)ImageLoadingHandler handler;
 @property(nonatomic,strong)PhotoDownloader *downloader;
 @property(nonatomic,copy)NSMutableArray *photoList;
-
+@property(nonatomic)BOOL isAllItemsSelectionMandatoryForGameEnd;
 @property(nonatomic)NSInteger currentlyShownImageIndex;
 @property(nonatomic,strong)NSMutableSet *identifiedPhotoIndexes;
 
-
+@property(nonatomic)BOOL isAllPhotosFetchedFromServer;
 @end
 
 @implementation ScrambleViewModel
 @synthesize totalPhotos,downloader,photoList;
 @synthesize identifiedPhotoIndexes,currentlyShownImageIndex;
-@synthesize timeInSeconds;
+@synthesize timeInSeconds,didTimerForIdentificationBegin;
+@synthesize isAllItemsSelectionMandatoryForGameEnd;
 -(id)initWithHandler:(ImageLoadingHandler)object{
     
     if (object == nil){
@@ -38,11 +40,12 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     if (self = [super init]) {
         _handler = object;
         totalPhotos = 9;
-        timeInSeconds = 0;
+        timeInSeconds = (NSInteger)totalSecondsBeforIdentificationbegins+1;
         photoList = [[NSMutableArray alloc]initWithCapacity:totalPhotos];
         downloader = [[PhotoDownloader alloc]init];
         identifiedPhotoIndexes = [[NSMutableSet alloc]initWithCapacity:totalPhotos];
-        
+        didTimerForIdentificationBegin = NO;
+        isAllItemsSelectionMandatoryForGameEnd = NO;
         
     }
     
@@ -72,6 +75,8 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     }
 }
 -(void)resetGameView{
+    [identifiedPhotoIndexes removeAllObjects];
+    [self shufflePhotos];
     [self.communicationDelegate didGameReset:self];
 }
 -(void)didGameInitiatedTimerNotFired{
@@ -80,6 +85,7 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     NSString *message = [[NSString alloc]initWithFormat:@"You will be given %d seconds to remember the Pictures",(int)totalSecondsBeforIdentificationbegins];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Scramble" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        didTimerForIdentificationBegin = YES;
         [self beginTimer];
     }];
     [alertController addAction:okAction];
@@ -88,12 +94,16 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     
 }
 -(void)beginTimer{
-    [self.communicationDelegate didGameInitiatedTimerNotFired:self];
+    
+    
     [NSTimer scheduledTimerWithTimeInterval:totalSecondsBeforIdentificationbegins
                                      target:self
                                    selector:@selector(timerFired:)
                                    userInfo:nil
                                     repeats:NO];
+    
+    [self.communicationDelegate didGameInitiatedTimerNotFired:self];
+    
     [self startRepeatingTimer];
 }
 -(void)timerFired:(NSTimer*)timer{
@@ -106,7 +116,7 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 -(void)didGameEnd{
     
     [self stopRepeatingTimer];
-    [identifiedPhotoIndexes removeAllObjects];
+    
     [self.communicationDelegate didGameEnd:self];
     
 }
@@ -124,8 +134,6 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     if (self.gameMode == GameNotYetBegan) {
         
         
-            
-            NSLog(@"default Image ");
             UIImage *defaultImage = [UIImage imageNamed:@"Default-Image"];
             return defaultImage;
             
@@ -133,26 +141,27 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
         
     }else if (self.gameMode == GameInitiatedTimerNotFired){
         
-        
-            
+    
+        if (didTimerForIdentificationBegin == YES) {
             
             FlickrPhoto * photo = [self.photoList objectAtIndex:index];
-            if (photo.largeImage == nil) {
-                NSLog(@"default Image ");
-            }else{
-                NSLog(@"Noraml Image ");
-            }
             return photo.largeImage;
-            
+
+        }else{
+            UIImage *defaultImage = [UIImage imageNamed:@"Default-Image"];
+            return defaultImage;
+        }
+        
         
         
     }
     else if (self.gameMode == GameEnded){
+       
         FlickrPhoto * photo = [self.photoList objectAtIndex:index];
         return photo.largeImage;
     }else{
         
-    
+        
         if (YES == [self isImageIndexAlreadyIdentified:index] ){
             
             FlickrPhoto * photo = [self.photoList objectAtIndex:index];
@@ -180,14 +189,15 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 -(void)didSelectImageAtIndex:(NSInteger)selectedIndex{
     
     BOOL didSucceed = [self isPhotoIdentifiedWithIndex:selectedIndex];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndex inSection:0];
     if (didSucceed) {
         [identifiedPhotoIndexes addObject:[NSNumber numberWithInteger:selectedIndex ]];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndex inSection:0];
-        [self.communicationDelegate didIdentificationSucceedAtIndex:indexPath inViewModel:self];
+        
+        [self.communicationDelegate didIdentificationSucceedAtIndexPath:indexPath inViewModel:self];
         [self updateRandomImageForIdentification];
     }
     else{
-        [self.communicationDelegate didIdentificationFailAtIndex:selectedIndex inViewModel:self];
+        [self.communicationDelegate didIdentificationFailAtIndexPath:indexPath inViewModel:self];
     }
 }
 #pragma mark Photo-Fetch
@@ -196,9 +206,9 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     [self.communicationDelegate didPhotoLoadBegan:self];
     [Async background:^{
         
-        [downloader fetchImage:^(FlickrPhoto *photo) {
+        [downloader fetchImage:^(FlickrPhoto * photo, BOOL isLastObject) {
             
-            
+            self.isAllPhotosFetchedFromServer = isLastObject;
             [photoList addObject:photo];
             NSInteger index = photoList.count-1;
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
@@ -212,13 +222,12 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
                 }
             }
             
-            
-            
         } failBlock:^(NSString * errorMessage) {
-        
+            
             [self.communicationDelegate showMessage:errorMessage];
             [photoList removeAllObjects];
         }];
+       
         
     }];
 }
@@ -242,11 +251,24 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
     return NO;
 }
 -(BOOL)isGameOver{
-     if (identifiedPhotoIndexes.count < totalPhotos) {
-         return NO;
-     }else{
-         return YES;
-     }
+    
+    if (isAllItemsSelectionMandatoryForGameEnd == YES) {
+        
+        if (identifiedPhotoIndexes.count < totalPhotos) {
+            return NO;
+        }else{
+            return YES;
+        }
+        
+    }else{
+        
+        if (identifiedPhotoIndexes.count < totalPhotos-1) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }
+    
 }
 -(NSInteger)updatedImageIndexForIdentification{
     
@@ -264,6 +286,7 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 #pragma mark
 - (IBAction)startRepeatingTimer {
     
+    [self updateTimerLabel:_repeatingTimer];
     // Cancel a preexisting timer.
     [self.repeatingTimer invalidate];
     
@@ -274,14 +297,26 @@ CGFloat totalSecondsBeforIdentificationbegins = 10.0;
 }
 
 -(void)updateTimerLabel:(NSTimer*)timer{
-    timeInSeconds = timeInSeconds + 1;
-    NSString *text = [[NSString alloc]initWithFormat:@"%ld second(s)",(long)timeInSeconds];
+    timeInSeconds = timeInSeconds - 1;
+    NSString *text = [[NSString alloc]initWithFormat:@"%ld seconds",(long)timeInSeconds];
     [self.communicationDelegate updateTimerText:text];
 }
 - (void)stopRepeatingTimer {
     
-    self.timeInSeconds = 0;
+    self.timeInSeconds = (NSInteger)totalSecondsBeforIdentificationbegins+1;
     [self.repeatingTimer invalidate];
     self.repeatingTimer = nil;
 }
+#pragma mark Shuffle
+#pragma mark
+-(void)shufflePhotos{
+    
+    if (true == self.isAllPhotosFetchedFromServer && self.photoList.count > 0) {
+        
+        NSSet *allPhotos = [[NSSet alloc]initWithArray:self.photoList];
+        NSMutableArray *mutablePhotoList = [[NSMutableArray alloc]initWithArray:[allPhotos allObjects]];
+        self.photoList = [mutablePhotoList mutableCopy];
+    }
+}
 @end
+

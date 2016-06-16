@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SDWebImage
 let urlOfFlickerPublicPhotos = "https://api.flickr.com/services/feeds/photos_public.gne?format=json"
 
-typealias PhotoDownloadCompletionBlock = (photo:FlickrPhoto)->Void
+typealias PhotoDownloadCompletionBlock = (photo:FlickrPhoto,isLastPhoto:Bool)->Void
 typealias PhotoDownloadFailBlock = (errorMessage:NSString)->Void
 
 class PhotoDownloader: NSObject {
@@ -71,12 +72,30 @@ class PhotoDownloader: NSObject {
         
     }
     
-    private func fetchImageList(photoListDictionary:[NSDictionary],block:PhotoDownloadCompletionBlock){
+    private func fetchImageList(photoDictionaryList:[NSDictionary],block:PhotoDownloadCompletionBlock){
         
-        for photoDict in photoListDictionary{
+         let manager = SDWebImageManager .sharedManager()
+       
+        for photoDict in photoDictionaryList{
+            
+            
             let photoObject = FlickrPhoto(photoDict)
-            let urlSession = NSURLSession.sharedSession()
+            //let urlSession = NSURLSession.sharedSession()
             let url = NSURL(string: photoObject.url!)
+            
+            manager.downloadImageWithURL(url, options: SDWebImageOptions.DelayPlaceholder, progress: { (receivedSize:Int,expectedSize: Int) -> Void in
+                
+                }, completed: { (image: UIImage!, error: NSError!, cacheType:SDImageCacheType,finished: Bool, imageURL:NSURL!) -> Void in
+                    photoObject.largeImage = image
+                    
+                    var isLastObject = false
+                    if photoDictionaryList.last == photoDict{
+                        isLastObject = true;
+                    }
+                    block(photo: photoObject,isLastPhoto: isLastObject)
+             })
+            
+            /*
             let task =  urlSession.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
                 if let _ = data{
                     photoObject.largeImage = UIImage(data: data!)
@@ -86,6 +105,7 @@ class PhotoDownloader: NSObject {
                 }
             })
             task.resume()
+*/
             
         }
     }

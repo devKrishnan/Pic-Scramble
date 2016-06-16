@@ -8,25 +8,31 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>UIView+Shake.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5352D432641F0656C90741034E32F31E</key>
+		<key>87D6EA918F9D98D889B7C3610198D0DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FCC31A2CAFB882E89704747F16D1952</key>
+		<key>9666688CB41B38A9914616144C9C7A3E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B3CEF024DCDF8D7563FBBF8D065B6B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -20,10 +20,11 @@
 -(void)didGameReset:(ScrambleViewModel*)viewModel;
 -(void)didGameInitiatedTimerNotFired:(ScrambleViewModel*)viewModel;
 -(void)didGameBegan:(ScrambleViewModel*)viewModel;
+
 -(void)didGameEnd:(ScrambleViewModel*)viewModel;
 -(void)showAlertController:(UIAlertController*)alertController forViewModel:(ScrambleViewModel*)viewModel;
--(void)didIdentificationSucceedAtIndex:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel;
--(void)didIdentificationFailAtIndex:(NSInteger)index inViewModel:(ScrambleViewModel*)viewModel;
+-(void)didIdentificationSucceedAtIndexPath:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel;
+-(void)didIdentificationFailAtIndexPath:(NSIndexPath*)indexPath inViewModel:(ScrambleViewModel*)viewModel;
 
 -(void)didFreshIdentifcationBeginWithImage:(UIImage *)image inViewModel :(ScrambleViewModel *)viewModel;
 -(void)updateTimerText:(NSString*)text;
@@ -44,11 +45,15 @@ typedef enum {
 @property(nonatomic)GameMode gameMode;
 
 
-@property(nonatomic,readonly)u_int32_t totalPhotos;
 -(id)initWithHandler:(ImageLoadingHandler)handler;
 -(BOOL)isGameOver;
 -(void)didSelectImageAtIndex:(NSInteger)selectedIndex;
 -(NSInteger)numberOfSections;
 -(NSInteger)numberOfItemsInSection:(NSInteger)section;
 -(UIImage*)imageForItemAtIndex:(NSInteger)index;
+
+
+@property(nonatomic,readonly)NSInteger currentlyShownImageIndex;
+@property(nonatomic,copy,readonly)NSMutableArray *photoList;
+@property(nonatomic,readonly)u_int32_t totalPhotos;
 @end
